@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accommodation — 7th International Symposium on Materials from Renewables (ISMR 2027)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <img src="images/single.jpg" alt="ISMR 2027 logo" class="logo-img">
+  <h1>7th International Symposium on Materials from Renewables (ISMR 2027)</h1>
+  <p class="subtitle">Organized by the Coatings and Polymeric Materials (CPM) Department, NDSU</p>
+  <div class="dates-badge">July 13<sup>th</sup> - July 14<sup>th</sup>, 2027 &nbsp;|&nbsp; Memorial Union, NDSU, Fargo, ND, USA</div>
+</header>
+
+<nav>
+  <a href="index.html#about">About</a>
+  <a href="index.html#abstract">Abstract Submission</a>
+  <div class="nav-dropdown">
+    <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Registration ▾</span>
+    <div class="dropdown-menu">
+      <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables" target="_blank" rel="noopener">Regular Registration</a>
+      <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables-student-registration" target="_blank" rel="noopener">Student Registration</a>
+    </div>
+  </div>
+  <a href="program.html">Program</a>
+  <a href="accommodation.html">Accommodation</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<main>
+
+  <section id="accommodation">
+    <h2>Accommodation</h2>
+    <!-- EDIT: replace with hotel blocks, campus lodging, and booking details -->
+    <p>Information on recommended hotels, room blocks, and travel details for ISMR 2027 will be posted here. Please check back for updates.</p>
+
+    <div class="card-row">
+      <div class="card">
+        <h3>Recommended Hotels</h3>
+        <!-- EDIT: hotel name, rate, distance, booking link -->
+        <p>To be announced</p>
+      </div>
+      <div class="card">
+        <h3>Getting to the Venue</h3>
+        <!-- EDIT: directions, parking, transit -->
+        <p>To be announced</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="venue">
+    <h2>Venue &amp; Travel</h2>
+    <p>ISMR 2027 will be held at the Memorial Union, North Dakota State University, 1401 Administration Ave, Fargo, ND 58102.</p>
+
+    <div class="map-embed">
+      <iframe
+        title="Memorial Union, NDSU location map"
+        src="https://maps.google.com/maps?q=Memorial%20Union%20NDSU%20Fargo%20ND&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+
+    <div class="card-row">
+      <div class="card">
+        <h3>By Air</h3>
+        <!-- EDIT: airport details -->
+        <p>Fly into Hector International Airport (FAR), about 10 minutes from campus. Larger connections are available via Minneapolis&ndash;St. Paul (MSP).</p>
+      </div>
+      <div class="card">
+        <h3>Parking &amp; Transit</h3>
+        <!-- EDIT: parking / shuttle details -->
+        <p>Visitor parking is available on campus. Details on permits, shuttles, and rideshare drop-off will be posted here.</p>
+      </div>
+      <div class="card">
+        <h3>Getting Around</h3>
+        <!-- EDIT: local transport -->
+        <p>The Memorial Union is centrally located on the NDSU campus, within walking distance of nearby hotels and dining.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>For more details and questions, please contact:<br>
+  Andriy Voronov, <a href="mailto:andriy.voronov@ndsu.edu">andriy.voronov@ndsu.edu</a><br>
+  Eugene Caldona, <a href="mailto:eugene.caldona@ndsu.edu">eugene.caldona@ndsu.edu</a></p>
+  <p>Questions? Contact the Coatings and Polymeric Materials Department &nbsp;|&nbsp;
+  <a href="mailto:cpm-conference@ndsu.edu">cpm-conference@ndsu.edu</a></p>
+  <p>&copy; 2026 Coatings and Polymeric Materials Department. All rights reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.nav-dropdown').forEach(function(dd){
+    var btn = dd.querySelector('.dropbtn');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    btn.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); }
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.nav-dropdown.open').forEach(function(dd){
+      dd.classList.remove('open');
+      dd.querySelector('.dropbtn').setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+
+</body>
+</html>
