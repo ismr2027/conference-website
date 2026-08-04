@@ -266,8 +266,13 @@
     padding:16px 18px;
     margin-bottom:24px;
     color:#7a5410;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
   }
-  .note-box .btn{margin-top:12px;}
+  .note-box .btn{margin-top:0;}
   .field{margin-bottom:18px;}
   .field label{
     display:block;
