@@ -41,7 +41,8 @@
     </div>
 
     <!-- EDIT: replace data-endpoint with your own Google Apps Script URL if you want abstracts saved to a separate sheet -->
-    <form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbwG6nchK2KyA-_YR7m4C3jYLfhZh7rF185ABVaFfWyr1P_BenIeOj-gwGdI82i7U4WY/exec" enctype="multipart/form-data">
+    <!--<form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbwG6nchK2KyA-_YR7m4C3jYLfhZh7rF185ABVaFfWyr1P_BenIeOj-gwGdI82i7U4WY/exec" enctype="multipart/form-data">-->
+    <form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbyYLPBRQJsf5kBtMWkjdxKgvuhx0nVfYvrrXX_TdaEsNi3DKeu7EB9kw-i-P4BhyADB/exec" enctype="multipart/form-data">
 
       <input type="hidden" name="Submission_Type" value="Abstract Submission">
       <!-- Triggers the existing server-side file-save path (authors are presenters) -->
@@ -50,6 +51,7 @@
       <div class="field">
         <label for="name">Full Name <span class="required">*</span></label>
         <input type="text" id="name" name="Full_Name" required>
+        <div class="field-error" id="name-error" aria-live="polite"></div>
       </div>
 
       <div class="field">
@@ -132,6 +134,8 @@
     const lookupStatus = document.getElementById('lookup-status');
     const lookupResult = document.getElementById('lookup-result');
     const scriptEndpoint = abstractForm.dataset.endpoint;
+    const nameInput = document.getElementById('name');
+    const nameError = document.getElementById('name-error');
 
     function showFormError(message) {
       formStatus.className = 'form-status error';
@@ -148,8 +152,10 @@
       const email = abstractForm.querySelector('#email').value.trim();
       const title = abstractForm.querySelector('#title').value.trim();
 
-      if (!fullName) { showFormError('Please enter your full name.'); return false; }
-      if (!/\s/.test(fullName)) { showFormError('Please enter your full name with a first and last name separated by a space.'); return false; }
+      if (!validateNameInput()) {
+        showFormError(nameError.textContent || 'Please enter your full name.');
+        return false;
+      }
       if (!affiliation) { showFormError('Please enter your institution or affiliation.'); return false; }
       if (!email) { showFormError('Please enter your email address.'); return false; }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showFormError('Please enter a valid email address containing an @ sign and a domain.'); return false; }
@@ -158,6 +164,41 @@
 
       clearFormError();
       return true;
+    }
+
+    function validateNameInput() {
+      const fullName = nameInput ? nameInput.value.trim() : '';
+      let message = '';
+
+      if (!fullName) {
+        message = 'Please enter your full name.';
+      } else {
+        const nameParts = fullName.split(/\s+/).filter(Boolean);
+        const hasValidNameStructure = nameParts.length >= 2 && nameParts.every(function (part) {
+          return part.length >= 1 && /^[A-Za-z.'-]+$/.test(part);
+        });
+
+        if (!hasValidNameStructure) {
+          message = 'Please enter your full name with at least first and last name separated by a space.';
+        }
+      }
+
+      if (nameInput) {
+        nameInput.setCustomValidity(message);
+      }
+      if (nameError) {
+        nameError.textContent = message;
+      }
+
+      return !message;
+    }
+
+    if (nameInput) {
+      nameInput.addEventListener('input', function () {
+        validateNameInput();
+        clearFormError();
+      });
+      nameInput.addEventListener('blur', validateNameInput);
     }
 
     function escapeHtml(value) {
