@@ -3,30 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7th International Symposium on Materials from Renewables (ISMR, 2027)</title>
+<title>ISMR 2027 — 7th International Symposium on Materials from Renewables (ISMR, 2027)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <img src="images/single.jpg" alt="ISMR 2027 logo" class="logo-img">
+  <!-- NAV -->
+  <div class="ismr-nav">
+    <a class="ismr-lockup" href="/">
+      <img src="images/ismr-mark.png" alt="ISMR 2027">
+      <span class="txt">
+        <span class="name">ISMR 2027</span>
+      </span>
+    </a>
+    <nav class="ismr-links">
+      <a href="#about">About</a>
+      <a href="#abstract">Abstract</a>
+     <!--<a href="#registration">Registration</a>-->
+      <div class="nav-dropdown">
+        <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false"><a href="#registration">Registration ▾</a></span>
+        <div class="dropdown-menu">
+          <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables" target="_blank" rel="noopener">Regular Registration</a>
+          <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables-student-registration" target="_blank" rel="noopener">Student Registration</a>
+        </div>
+      </div>
+      
+      <a href="program.html">Program</a>
+      <a href="accommodation.html">Accommodation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- QUILT RIBBON -->
+  <div class="ismr-ribbon" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <div class="ismr-hero">
+    <div class="pattern"></div>
+    <div class="veil"></div>
+    <div class="inner">
+      <p class="eyebrow">7th International Symposium on</p>
+      <h1>Materials from Renewables</h1>
+      <p class="sub">ISMR 2027 &nbsp;·&nbsp; July 13–14 &nbsp;·&nbsp; Memorial Union, NDSU, Fargo</p>
+      <div class="ismr-actions">
+        <a class="btn-primary" href="#registration">Register now</a>
+        <a class="btn-ghost" href="program.html">View program</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALL FOR ABSTRACTS -->
+  <!--<div class="ismr-strip">
+    <!--<span class="label"><span class="dot"></span>Call for abstracts is open</span>
+    <!--<a class="btn" href="#abstracts">Submit abstract →</a>
+  <!--</div>
+  <!--<img src="images/single.jpg" alt="ISMR 2027 logo" class="logo-img">-->
 
   <!-- EDIT: conference title (change ordinal/year if needed) -->
-  <h2>7th International Symposium on</h2>
-  <h1>Materials from Renewables</h1>
-  <h2>(ISMR 2027)</h2>
+  <!--<h2>7th International Symposium on</h2>
+  <!--<h1>Materials from Renewables</h1>
+  <!--<h2>(ISMR 2027)</h2>
 
   <!-- EDIT: organizing department / tagline -->
   <!--<p class="subtitle">Organized by the Coatings and Polymeric Materials (CPM) Department, NDSU</p>-->
 
   <!-- EDIT: replace with the confirmed conference dates and location -->
-  <div class="dates-badge">July 13 - 14, 2027 &nbsp;|&nbsp; Memorial Union, NDSU, Fargo, ND, USA</div>
-</header>
+  <!--<div class="dates-badge">July 13 - 14, 2027 &nbsp;|&nbsp; Memorial Union, NDSU, Fargo, ND, USA</div>
 
-<nav>
+</header>
+<!--<nav>
   <!-- About, Abstract Submission, Registration, Program, Accommodation, Contact -->
-  <a href="#about">About</a>
+  <!--<a href="#about">About</a>
   <a href="#abstract">Abstract Submission</a>
   <div class="nav-dropdown">
     <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Registration ▾</span>
@@ -40,9 +92,10 @@
   <a href="contact.html">Contact</a>
 
 </nav>
-
+-->
 <div class="cfa-banner">
   <div class="cfa-text">
+    <span class="dot"></span>
     <strong>Call for Abstracts is open</strong>
     <!-- EDIT: replace with the confirmed abstract deadline -->
     <!-- <span>Submission deadline: to be announced</span> -->

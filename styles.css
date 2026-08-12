@@ -1,21 +1,111 @@
   :root{
-    --green-dark:#1f4d3d;
     --green-mid:#2f7a54;
     --green-light:#eaf5ee;
     --accent:#e8a72e;
     --accent-dark:#c98f2b;
     --text:#233229;
     --muted:#5b6b62;
-    --cream:#f7f2e6;
+    --green:#17462f;
+    --green-dark:#0f3222;
+    --amber:#eeab24;
+    --amber-soft:#f6d99a;
+    --cream:#f4f2ea;
+    --line:#e8e4d8;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family:"Segoe UI", Arial, sans-serif;
-    color:var(--text);
+    font-family:"Manrope", Arial, sans-serif;
+    color:var(--green);
     background:var(--cream);
     line-height:1.6;
   }
+  a{color:var(--green);text-decoration:none}
+  
+    /* ---------- NAV ---------- */
+  .ismr-nav{
+    display:flex;align-items:center;justify-content:space-between;gap:28px;
+    padding:12px 56px;background:#fff;border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .ismr-lockup{display:flex;align-items:center;gap:11px;flex-shrink:0;white-space:nowrap}
+  .ismr-lockup img{width:40px;height:40px;border-radius:9px;display:block}
+  .ismr-lockup .txt{display:flex;flex-direction:column;line-height:1.05}
+  .ismr-lockup .name{font-weight:800;font-size:17px;letter-spacing:-.01em}
+  .ismr-lockup .tag{font-weight:500;font-size:11px;line-height:1.3;color:#6f7d6a;letter-spacing:.06em;text-transform:uppercase}
+
+  .ismr-links{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-end;gap:4px;flex:1 1 auto;min-width:0}
+  .ismr-links a{
+    font-weight:600;font-size:15px;line-height:1;padding:11px 14px;border-radius:8px;
+    white-space:nowrap;flex-shrink:0;transition:all .16s;
+  }
+  .ismr-links a:hover{background:#f2efe3;color:#b8830f}
+
+  /* ---------- QUILT RIBBON ---------- */
+  .ismr-ribbon{height:26px;width:100%;background:url('images/ribbon-strip.png') repeat-x left center;background-size:auto 26px;border-bottom:3px solid var(--amber)}
+
+  /* ---------- HERO ---------- */
+  .ismr-hero{position:relative;overflow:hidden;padding:76px 56px 76px 96px}
+  .ismr-hero .pattern{
+    position:absolute;inset:0;
+    background-image:url('images/quilt-steps.png');background-size:1120px;opacity:.4;
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,1) 100%);
+    mask-image:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,1) 100%);
+  }
+  .ismr-hero .veil{
+    position:absolute;inset:0;
+    background:linear-gradient(160deg,rgba(23,70,47,.86),rgba(31,88,58,.9) 55%,rgba(23,70,47,.94));
+  }
+  .ismr-hero .inner{position:relative;max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start}
+  .ismr-hero .eyebrow{margin:0 0 12px;font-weight:600;font-size:17px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;color:#f0c96d}
+  .ismr-hero h1{margin:0;font-weight:300;font-size:68px;line-height:1.05;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+  .ismr-hero .sub{margin:14px 0 0;font-weight:500;font-size:16px;line-height:1.5;color:rgba(255,255,255,.82);text-wrap:pretty}
+  .ismr-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn-primary{background:var(--amber);color:var(--green);font-weight:800;font-size:15px;line-height:1;padding:15px 26px;border-radius:999px;transition:background .18s;text-align:center}
+  .btn-primary:hover{background:#ffc247}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff;font-weight:700;font-size:15px;line-height:1;padding:13.5px 24px;border-radius:999px;transition:background .18s;text-align:center}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* ---------- CALL STRIP ---------- */
+  .ismr-strip{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;text-align:center;
+    gap:8px 20px;background:var(--amber-soft);padding:10px 56px;
+  }
+  .ismr-strip .label{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:12.5px;line-height:1.3;color:#5a3d05;letter-spacing:.02em;text-transform:uppercase}
+  .ismr-strip .dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}
+  .ismr-strip .deadline{font-weight:500;font-size:12.5px;line-height:1.4;color:#6b4c0d}
+  .ismr-strip .btn{background:var(--green);color:#fff;font-weight:500;font-size:12.5px;line-height:1;padding:8px 16px;border-radius:999px;transition:background .18s}
+  .ismr-strip .btn:hover{background:var(--green-dark)}
+
+  /* ---------- TABLET ---------- */
+  @media (max-width:1120px){
+    .ismr-nav{padding:12px 32px;gap:20px}
+    .ismr-lockup .tag{display:none}
+    .ismr-links{gap:0}
+    .ismr-links a{font-size:13.5px;padding:10px 9px}
+    .ismr-hero{padding:56px 32px 56px 60px}
+    .ismr-hero h1{font-size:52px}
+    .ismr-strip{padding:10px 32px}
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:760px){
+    .ismr-nav{flex-direction:column;align-items:center;gap:8px;padding:10px 12px}
+    .ismr-lockup .tag{display:block}
+    .ismr-links{flex-wrap:wrap;justify-content:center;gap:2px 4px;width:100%;border-top:1px solid #eeeade;padding-top:6px}
+    .ismr-links a{font-size:14px;padding:11px 12px}
+    .ismr-ribbon{height:18px;background-size:auto 18px}
+    .ismr-hero{padding:44px 24px 48px}
+    .ismr-hero .inner{align-items:center;text-align:center}
+    .ismr-hero .eyebrow{font-size:14px}
+    .ismr-hero h1{font-size:36px}
+    .ismr-hero .sub{font-size:14px}
+    .ismr-actions{justify-content:center;width:100%}
+    .ismr-actions a{flex-grow:1}
+    .ismr-strip{flex-direction:column;padding:12px 20px}
+    .ismr-strip .btn{width:100%}
+  }
+  /*
   header{
     position:relative;
     color:#fff;
@@ -130,14 +220,14 @@
     opacity:0.9;
   }
   nav a:hover{opacity:1; color:var(--accent); text-decoration:none;}
-
+*/
   /* Registration dropdown */
   .nav-dropdown{
     position:relative;
     display:inline-block;
   }
   .nav-dropdown .dropbtn{
-    color:#fff;
+    color:#6f7d6a;
     font-size:0.95rem;
     opacity:0.9;
     cursor:pointer;
@@ -151,7 +241,7 @@
     left:50%;
     transform:translateX(-50%);
     margin-top:12px;
-    background:var(--green-dark);
+    background:var(--cream);
     min-width:190px;
     border-radius:8px;
     box-shadow:0 6px 18px rgba(0,0,0,0.25);
@@ -255,8 +345,8 @@
     display:inline-block;
   }
   .motif-band{
-    height:90px;
-    background:url("images/single.jpg") repeat-x center;
+    height:40px;
+    background:url("images/quilt-mosaic.png") repeat-x center;
     background-size:auto 90px;
     margin:36px 0 0;
   }
