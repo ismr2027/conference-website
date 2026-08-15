@@ -41,21 +41,31 @@
 
   <!-- QUILT RIBBON -->
   <div class="ismr-ribbon" aria-hidden="true"></div>
+</header>
 
-  <!-- HERO -->
-  <div class="ismr-hero">
-    <div class="pattern"></div>
-    <div class="veil"></div>
-    <div class="inner">
-      <p class="eyebrow">7th International Symposium on</p>
-      <h1>Materials from Renewables</h1>
-      <p class="sub">ISMR 2027 &nbsp;·&nbsp; July 13–14 &nbsp;·&nbsp; Memorial Union, NDSU, Fargo</p>
-      <div class="ismr-actions">
-        <a class="btn-primary" href="#registration">Register now</a>
-        <a class="btn-ghost" href="program.html">View program</a>
-      </div>
+<!-- HERO -->
+<div class="ismr-hero">
+  <div class="pattern"></div>
+  <div class="veil"></div>
+  <div class="inner">
+    <p class="eyebrow">7th International Symposium on</p>
+    <h1>Materials from Renewables</h1>
+    <p class="sub">ISMR 2027 &nbsp;·&nbsp; July 13–14 &nbsp;·&nbsp; Memorial Union, NDSU, Fargo</p>
+    <div class="ismr-actions">
+      <a class="btn-primary" href="#registration">Register now</a>
+      <a class="btn-ghost" href="program.html">View program</a>
     </div>
   </div>
+</div>
+
+<div class="cfa-banner">
+  <div class="cfa-text">
+    <strong>Call for Abstracts is open</strong>
+    <!-- EDIT: replace with the confirmed abstract deadline -->
+    <!-- <span>Submission deadline: to be announced</span> -->
+  </div>
+  <a class="btn" href="#abstract">Submit Abstract</a>
+</div>
 
   <!-- CALL FOR ABSTRACTS -->
   <!--<div class="ismr-strip">
@@ -93,16 +103,6 @@
 
 </nav>
 -->
-<div class="cfa-banner">
-  <div class="cfa-text">
-    <span class="dot"></span>
-    <strong>Call for Abstracts is open</strong>
-    <!-- EDIT: replace with the confirmed abstract deadline -->
-    <!-- <span>Submission deadline: to be announced</span> -->
-  </div>
-  <a class="btn" href="#abstract">Submit Abstract</a>
-</div>
-
 <main>
 
   <section id="about">
@@ -285,6 +285,28 @@
     }
   })();
 
+  /* Same-page anchor navigation with extra sticky-header offset */
+  (function(){
+    var header = document.querySelector('header');
+    function adjustHashScroll(targetId){
+      if(!targetId || targetId === '#') return;
+      var target = document.querySelector(targetId);
+      if(!target) return;
+      var offset = (header ? header.offsetHeight : 0) + 60;
+      var top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      history.replaceState(null, '', targetId);
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var hash = this.getAttribute('href');
+        if(!hash || hash === '#') return;
+        e.preventDefault();
+        adjustHashScroll(hash);
+      });
+    });
+  })();
+
   /* Active-section nav highlight */
   (function(){
     var links = Array.prototype.slice.call(document.querySelectorAll('nav a[href^="#"]'));
@@ -331,6 +353,7 @@
     lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
   })();
+
 </script>
 
 </body>

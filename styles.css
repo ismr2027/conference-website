@@ -21,12 +21,24 @@
     line-height:1.6;
   }
   a{color:var(--green);text-decoration:none}
+
+  header{
+    position:sticky;
+    top:0;
+    z-index:1200;
+    width:100%;
+    padding:0;
+    background:var(--cream);
+    box-shadow:0 1px 0 rgba(23,70,47,0.08);
+    isolation:isolate;
+  }
   
     /* ---------- NAV ---------- */
   .ismr-nav{
     display:flex;align-items:center;justify-content:space-between;gap:28px;
     padding:12px 56px;background:#fff;border-bottom:1px solid var(--line);
-    position:sticky;top:0;z-index:50;
+    position:relative;z-index:3;
+    box-shadow:0 1px 0 rgba(23,70,47,0.08);
   }
   .ismr-lockup{display:flex;align-items:center;gap:11px;flex-shrink:0;white-space:nowrap}
   .ismr-lockup img{width:40px;height:40px;border-radius:9px;display:block}
@@ -42,13 +54,20 @@
   .ismr-links a:hover{background:#f2efe3;color:#b8830f}
 
   /* ---------- QUILT RIBBON ---------- */
-  .ismr-ribbon{height:26px;width:100%;background:url('images/ribbon-strip.png') repeat-x left center;background-size:auto 26px;border-bottom:3px solid var(--amber)}
+  .ismr-ribbon{
+    position:relative;z-index:2;height:26px;width:100%;margin:0;display:block;
+    background:url('images/ribbon-strip.png') repeat-x left center;background-size:auto 26px;
+    border-bottom:3px solid var(--amber);
+    background-color:var(--cream);
+    margin-bottom:0;
+  }
 
   /* ---------- HERO ---------- */
-  .ismr-hero{position:relative;overflow:hidden;padding:76px 56px 76px 96px}
+  .ismr-hero{position:relative;overflow:hidden;padding: 76px 56px 76px 96px !important;margin-top:0 !important}
+  .ismr-hero .inner{position:relative;max-width:1080px;margin:0 auto; display:flex;flex-direction:column;align-items:flex-start}
   .ismr-hero .pattern{
     position:absolute;inset:0;
-    background-image:url('images/quilt-steps.png');background-size:1120px;opacity:.4;
+    background-image:url('images/quilt-steps.png');background-size:1120px;opacity:.6;
     -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,1) 100%);
     mask-image:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,1) 100%);
   }
@@ -56,7 +75,6 @@
     position:absolute;inset:0;
     background:linear-gradient(160deg,rgba(23,70,47,.86),rgba(31,88,58,.9) 55%,rgba(23,70,47,.94));
   }
-  .ismr-hero .inner{position:relative;max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start}
   .ismr-hero .eyebrow{margin:0 0 12px;font-weight:600;font-size:17px;line-height:1.3;letter-spacing:.16em;text-transform:uppercase;color:#f0c96d}
   .ismr-hero h1{margin:0;font-weight:300;font-size:68px;line-height:1.05;letter-spacing:-.02em;color:#fff;text-wrap:balance}
   .ismr-hero .sub{margin:14px 0 0;font-weight:500;font-size:16px;line-height:1.5;color:rgba(255,255,255,.82);text-wrap:pretty}
@@ -83,7 +101,8 @@
     .ismr-lockup .tag{display:none}
     .ismr-links{gap:0}
     .ismr-links a{font-size:13.5px;padding:10px 9px}
-    .ismr-hero{padding:56px 32px 56px 60px}
+    .ismr-hero{padding:56px 32px 56px 60px !important}
+    .ismr-hero .inner{padding-top:0 !important}
     .ismr-hero h1{font-size:52px}
     .ismr-strip{padding:10px 32px}
   }
@@ -95,8 +114,8 @@
     .ismr-links{flex-wrap:wrap;justify-content:center;gap:2px 4px;width:100%;border-top:1px solid #eeeade;padding-top:6px}
     .ismr-links a{font-size:14px;padding:11px 12px}
     .ismr-ribbon{height:18px;background-size:auto 18px}
-    .ismr-hero{padding:44px 24px 48px}
-    .ismr-hero .inner{align-items:center;text-align:center}
+    .ismr-hero{padding:24px 48px !important}
+    .ismr-hero .inner{padding-top:0 !important;align-items:center;text-align:center}
     .ismr-hero .eyebrow{font-size:14px}
     .ismr-hero h1{font-size:36px}
     .ismr-hero .sub{font-size:14px}
@@ -264,11 +283,13 @@
     opacity:1;
   }
   main{
+    position:relative;
+    z-index:1;
     max-width:900px;
     margin:0 auto;
     padding:50px 20px;
   }
-  section{margin-bottom:55px;}
+  section{position:relative; z-index:1; margin-bottom:55px;}
   h2{
     color:var(--green-dark);
     font-size:1.4rem;
@@ -487,9 +508,9 @@
     cursor:not-allowed;
   }
 
-  /* Smooth scroll + offset for sticky nav */
-  html{scroll-behavior:smooth;}
-  section{scroll-margin-top:70px;}
+  /* Smooth scroll + offset for sticky nav and hero banner */
+  html{scroll-behavior:smooth; scroll-padding-top:280px;}
+  section{scroll-margin-top:280px;}
 
   /* Registration heading row with countdown on the right */
   .reg-head{
@@ -568,8 +589,10 @@
   }
   .reg-option h3{margin-top:0;}
 
-  @media (max-width:600px){
-    .reg-option + .reg-option{border-left:none; border-top:1px solid #ece4d1; padding-top:20px;}
+  @media (max-width:680px){
+    .reg-card{display:block;}
+    .reg-option{width:100%;}
+    .reg-option + .reg-option{border-left:none; border-top:none; padding-top:0;}
   }
 
   /* One-pager download link */
@@ -613,21 +636,14 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:24px;
+    gap:18px;
     flex-wrap:wrap;
-    padding:14px 20px;
+    padding:10px 20px 12px;
+    margin-top:0;
     text-align:center;
+    border-top:0;
   }
-  .cfa-text .dot{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--green);
-    display:inline-block;
-    margin-right:8px;
-    vertical-align:middle;
-  }
-  .cfa-text{display:flex; flex-direction:column; line-height:1.3;}
+  .cfa-text{display:flex; flex-direction:column; line-height:1.2; margin:0;}
   .cfa-text strong{font-size:1.05rem;}
   .cfa-text span{font-size:0.85rem; color:#3a2a08;}
   .cfa-banner .btn{
@@ -780,7 +796,6 @@
 
   /* Mobile responsive polish */
   @media (max-width:768px){
-    header{padding:30px 16px 36px;}
     header h1{font-size:1.35rem;}
     header p.subtitle{font-size:0.95rem;}
     .dates-badge{font-size:0.85rem; padding:9px 16px;}

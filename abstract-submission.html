@@ -4,31 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abstract Submission — 7th International Symposium on Materials from Renewables (ISMR 2027)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header>
-  <img src="images/single.jpg" alt="ISMR 2027 logo" class="logo-img">
-  <h1>7th International Symposium on Materials from Renewables (ISMR 2027)</h1>
-  <p class="subtitle">Organized by the Coatings and Polymeric Materials (CPM) Department, NDSU</p>
-  <div class="dates-badge">July 13<sup>th</sup> - July 14<sup>th</sup>, 2027 &nbsp;|&nbsp; Memorial Union, NDSU, Fargo, ND, USA</div>
-</header>
-
-<nav>
-  <a href="index.html#about">About</a>
-  <a href="abstract-submission.html">Abstract Submission</a>
-  <div class="nav-dropdown">
-    <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Registration ▾</span>
-    <div class="dropdown-menu">
-      <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables" target="_blank" rel="noopener">Regular Registration</a>
-      <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables-student-registration" target="_blank" rel="noopener">Student Registration</a>
-    </div>
+  <div class="ismr-nav">
+    <a class="ismr-lockup" href="index.html">
+      <img src="images/ismr-mark.png" alt="ISMR 2027">
+      <span class="txt">
+        <span class="name">ISMR 2027</span>
+      </span>
+    </a>
+    <nav class="ismr-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#abstract">Abstract</a>
+      <div class="nav-dropdown">
+        <span class="dropbtn" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">Registration ▾</span>
+        <div class="dropdown-menu">
+          <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables" target="_blank" rel="noopener">Regular Registration</a>
+          <a href="https://northdakotastate-ndus.nbsstore.net/seventh-international-symposium-on-materials-from-renewables-student-registration" target="_blank" rel="noopener">Student Registration</a>
+        </div>
+      </div>
+      <a href="program.html">Program</a>
+      <a href="accommodation.html">Accommodation</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </div>
-  <a href="program.html">Program</a>
-  <a href="accommodation.html">Accommodation</a>
-  <a href="contact.html">Contact</a>
-</nav>
+
+  <div class="ismr-ribbon" aria-hidden="true"></div>
+</header>
 
 <main>
   <section id="abstract-submission">
@@ -40,12 +48,8 @@
       <a class="btn secondary" href="AbstractTemplate.docx" download>Download Word Template</a>
     </div>
 
-    <!-- EDIT: replace data-endpoint with your own Google Apps Script URL if you want abstracts saved to a separate sheet -->
-    <!--<form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbwG6nchK2KyA-_YR7m4C3jYLfhZh7rF185ABVaFfWyr1P_BenIeOj-gwGdI82i7U4WY/exec" enctype="multipart/form-data">-->
     <form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbyYLPBRQJsf5kBtMWkjdxKgvuhx0nVfYvrrXX_TdaEsNi3DKeu7EB9kw-i-P4BhyADB/exec" enctype="multipart/form-data">
-
       <input type="hidden" name="Submission_Type" value="Abstract Submission">
-      <!-- Triggers the existing server-side file-save path (authors are presenters) -->
       <input type="hidden" name="Registration_Type" value="Speaker/Presenter">
 
       <div class="field">
@@ -82,7 +86,7 @@
     <div id="submission-summary" class="form-status" style="display:none;"></div>
   </section>
 
-  <section class="card" style="margin-top:30px;">
+  <div class="card" style="margin-top:30px;">
     <h3>Check Your Submission</h3>
     <p>Enter your email address to view your submission details and any uploaded abstract information.</p>
     <form id="lookup-form" class="field">
@@ -92,20 +96,16 @@
     </form>
     <div id="lookup-status" class="form-status" aria-live="polite"></div>
     <div id="lookup-result" style="display:none; margin-top:12px;"></div>
-  </section>
+  </div>
 </main>
 
 <footer>
-  <p>For more details and questions, please contact:<br>
-  Andriy Voronov, <a href="mailto:andriy.voronov@ndsu.edu">andriy.voronov@ndsu.edu</a><br>
-  Eugene Caldona, <a href="mailto:eugene.caldona@ndsu.edu">eugene.caldona@ndsu.edu</a></p>
   <p>Questions? Contact the Coatings and Polymeric Materials Department &nbsp;|&nbsp;
   <a href="mailto:cpm-conference@ndsu.edu">cpm-conference@ndsu.edu</a></p>
   <p>&copy; 2026 Coatings and Polymeric Materials Department. All rights reserved.</p>
 </footer>
 
 <script>
-  /* Registration dropdown toggle */
   document.querySelectorAll('.nav-dropdown').forEach(function(dd){
     var btn = dd.querySelector('.dropbtn');
     btn.addEventListener('click', function(e){
@@ -124,16 +124,13 @@
     });
   });
 
-  /* Abstract submission + lookup */
   document.addEventListener('DOMContentLoaded', function () {
     const abstractForm = document.getElementById('abstract-form');
     const formStatus = document.getElementById('form-status');
-    const submissionSummary = document.getElementById('submission-summary');
     const abstractFileInput = document.getElementById('abstract-file');
     const lookupForm = document.getElementById('lookup-form');
     const lookupStatus = document.getElementById('lookup-status');
     const lookupResult = document.getElementById('lookup-result');
-    const scriptEndpoint = abstractForm.dataset.endpoint;
     const nameInput = document.getElementById('name');
     const nameError = document.getElementById('name-error');
 
@@ -147,7 +144,6 @@
     }
 
     function validateForm() {
-      const fullName = abstractForm.querySelector('#name').value.trim();
       const affiliation = abstractForm.querySelector('#affiliation').value.trim();
       const email = abstractForm.querySelector('#email').value.trim();
       const title = abstractForm.querySelector('#title').value.trim();
@@ -258,91 +254,68 @@
       }).join('');
     }
 
-    if (lookupForm) {
-      lookupForm.addEventListener('submit', async function (event) {
-        event.preventDefault();
-        const email = document.getElementById('lookup-email').value.trim();
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          lookupStatus.className = 'form-status error';
-          lookupStatus.textContent = 'Please enter a valid email address.';
-          lookupResult.style.display = 'none';
-          return;
-        }
-        lookupStatus.className = 'form-status';
-        lookupStatus.textContent = 'Looking up your submission...';
-        lookupResult.style.display = 'none';
-        try {
-          const response = await fetch(scriptEndpoint + '?email=' + encodeURIComponent(email), { method: 'GET', mode: 'cors' });
-          const responseText = await response.text();
-          let result = {};
-          if (responseText) { try { result = JSON.parse(responseText); } catch (e) { result = { raw: responseText }; } }
-          if (!response.ok) { throw new Error(result.message || result.error || responseText || 'Unable to reach the lookup service.'); }
-          if (result.status === 'not_found' || result.status === 'error' || result.success === false) {
-            throw new Error(result.message || result.error || 'No submission found for that email.');
-          }
-          renderLookupTable(result, 'Submission found.', false);
-        } catch (error) {
-          renderLookupTable(null, error.message, true);
-        }
-      });
-    }
+    abstractForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validateForm()) return;
 
-    function readFileAsBase64(file) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = function () {
-          const result = reader.result;
-          if (typeof result === 'string') { resolve(result.split(',')[1] || ''); }
-          else { reject(new Error('Unable to read the selected file.')); }
-        };
-        reader.onerror = function () { reject(new Error('Unable to read the selected file.')); };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    abstractForm.addEventListener('submit', async function (event) {
-      event.preventDefault();
-      if (!validateForm()) { return; }
-      if (!scriptEndpoint || scriptEndpoint.includes('YOUR_SCRIPT_ID')) {
-        showFormError('The submission endpoint has not been configured yet. Please update the form endpoint in abstract-submission.html.');
-        return;
-      }
+      const formData = new FormData(abstractForm);
       const submitButton = abstractForm.querySelector('button[type="submit"]');
-      const originalText = submitButton.textContent;
       submitButton.disabled = true;
       submitButton.textContent = 'Submitting...';
 
-      const file = abstractFileInput.files[0];
-      const formData = new FormData(abstractForm);
-      if (file) {
-        const base64 = await readFileAsBase64(file);
-        formData.set('fileData', 'data:' + (file.type || 'application/octet-stream') + ';base64,' + base64);
-        formData.set('fileName', file.name);
-      }
-      try {
-        const response = await fetch(scriptEndpoint, { method: 'POST', mode: 'cors', body: formData });
-        const responseText = await response.text();
-        let result = null;
-        if (responseText) { try { result = JSON.parse(responseText); } catch (e) { result = null; } }
-        if (!response.ok) { throw new Error((result && result.error) || responseText || 'Request failed'); }
-        if (result && result.success === false) { throw new Error(result.error || 'The submission service returned an error.'); }
-
-        formStatus.className = 'form-status success';
-        formStatus.textContent = 'Your abstract was submitted successfully. Thank you!';
-
-        const fileLabel = (result && result.fileName) || (file && file.name) || '';
-        if (fileLabel) {
-          submissionSummary.style.display = 'block';
-          submissionSummary.className = 'form-status success';
-          submissionSummary.innerHTML = '<strong>Abstract uploaded:</strong> ' + escapeHtml(fileLabel) + '<br><strong>Submitted at:</strong> ' + new Date().toLocaleString();
+      fetch(abstractForm.dataset.endpoint, {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Submission failed. Please try again.');
         }
+        return response.text();
+      })
+      .then(function() {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = 'Your abstract has been submitted successfully.';
         abstractForm.reset();
-      } catch (error) {
-        showFormError('We could not submit your abstract. ' + error.message);
-      } finally {
+      })
+      .catch(function(error) {
+        showFormError(error.message || 'There was a problem submitting your abstract.');
+      })
+      .finally(function() {
         submitButton.disabled = false;
-        submitButton.textContent = originalText;
+        submitButton.textContent = 'Submit Abstract';
+      });
+    });
+
+    lookupForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('lookup-email').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        lookupStatus.className = 'form-status error';
+        lookupStatus.textContent = 'Please enter a valid email address.';
+        lookupResult.style.display = 'none';
+        return;
       }
+
+      lookupStatus.className = 'form-status';
+      lookupStatus.textContent = 'Checking your submission...';
+      lookupResult.style.display = 'none';
+
+      fetch('https://script.google.com/macros/s/AKfycbyYLPBRQJsf5kBtMWkjdxKgvuhx0nVfYvrrXX_TdaEsNi3DKeu7EB9kw-i-P4BhyADB/exec?email=' + encodeURIComponent(email))
+        .then(function(response) {
+          if (!response.ok) {
+            throw new Error('Unable to look up submission.');
+          }
+          return response.json();
+        })
+        .then(function(payload) {
+          renderLookupTable(payload, 'No submission found for that email.', false);
+        })
+        .catch(function(error) {
+          lookupStatus.className = 'form-status error';
+          lookupStatus.textContent = error.message || 'Unable to look up submission.';
+          lookupResult.style.display = 'none';
+        });
     });
   });
 </script>
