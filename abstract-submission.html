@@ -93,6 +93,10 @@
 
     <div id="form-status" class="form-status" aria-live="polite"></div>
     <div id="submission-summary" class="form-status" style="display:none;"></div>
+    <div style="margin-top:12px;">
+      <button id="endpoint-test-btn" type="button" class="btn secondary">Test Endpoint</button>
+      <div id="endpoint-test-status" class="form-status" aria-live="polite" style="margin-top:8px;"></div>
+    </div>
   </section>
 
   <div class="card" style="margin-top:30px;">
@@ -389,6 +393,29 @@
           lookupResult.style.display = 'none';
         });
     });
+
+      // Endpoint connectivity test to help diagnose network/CORS errors.
+      const endpointTestBtn = document.getElementById('endpoint-test-btn');
+      const endpointTestStatus = document.getElementById('endpoint-test-status');
+      if (endpointTestBtn) {
+        endpointTestBtn.addEventListener('click', function () {
+          endpointTestStatus.className = 'form-status';
+          endpointTestStatus.textContent = 'Testing endpoint reachability...';
+          // Try a simple GET — if this fails with a CORS error the
+          // browser will surface "Failed to fetch" here as well.
+          fetch(abstractForm.dataset.endpoint, { method: 'GET', cache: 'no-store' })
+            .then(function (resp) {
+              endpointTestStatus.className = 'form-status success';
+              endpointTestStatus.textContent = 'Endpoint reachable — HTTP ' + resp.status + '. Check console for response body.';
+              return resp.text().then(function (text) { console.log('Endpoint test response (truncated):', text.slice(0, 200)); });
+            })
+            .catch(function (err) {
+              endpointTestStatus.className = 'form-status error';
+              endpointTestStatus.textContent = 'Fetch failed: ' + (err && err.message ? err.message : String(err));
+              console.error('Endpoint test error:', err);
+            });
+        });
+      }
   });
 </script>
 
