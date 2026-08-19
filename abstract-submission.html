@@ -49,7 +49,7 @@
       <a class="btn secondary" href="AbstractTemplate.docx" download>Download Word Template</a>
     </div>
 
-    <form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbzRo2AZMUanHM5P4JZJ9sX7zQBU2k-afoKuh3auQuIRbyOL67snkfNzFHAvyi94cSOl/exec">
+    <form id="abstract-form" data-endpoint="https://script.google.com/macros/s/AKfycbwjL4WSRuWZPgb-ZHSBhe75ue300GOLKnm1vttHFou3qcHqbiokz0D1dWbatpS8_Eah/exec">
       <input type="hidden" name="Submission_Type" value="Abstract Submission">
       <input type="hidden" name="Registration_Type" value="Speaker/Presenter">
 
@@ -312,11 +312,14 @@
             Website: honeypotField ? honeypotField.value : ''
           };
 
-          // Code.gs only parses the body as JSON when Content-Type is
-          // application/json, so that's what we send.
+          // Content-Type: text/plain avoids a CORS preflight (OPTIONS)
+          // request. Apps Script web apps don't handle preflight, so
+          // application/json here causes a "Failed to fetch" error even
+          // though the request itself is fine. The backend still parses
+          // the body as JSON by checking its shape.
           return fetch(abstractForm.dataset.endpoint, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify(payload)
           });
         })
